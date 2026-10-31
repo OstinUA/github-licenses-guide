@@ -1,125 +1,101 @@
-# 📜 GitHub Licenses Guide: All 13 Default Templates Explained
+# GitHub Licenses Guide
 
-> 🌐 **Translations:** [English](README.md) | [Українська](README.uk.md) | [Русский](README.ru.md) | [Español](README.es.md) | [Deutsch](README.de.md) | [Français](README.fr.md) | [简体中文](README.zh.md) | [Português](README.pt.md)
+> **Languages:** English · [Русский](i18n/README.ru.md) · [Українська](i18n/README.uk.md) · [Español](i18n/README.es.md) · [Deutsch](i18n/README.de.md) · [Français](i18n/README.fr.md) · [简体中文](i18n/README.zh-CN.md) · [Português (Brasil)](i18n/README.pt-BR.md)
+>
+> A practical overview of the 13 license templates covered by this guide. GitHub's available templates can change; check the [current GitHub documentation](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository) and the full license text before choosing one.
 
-When creating a new repository or adding a license on GitHub, you are presented with **13 default license templates**. Choosing the wrong one can either expose you to patent risks, allow corporations to close your code against your wishes, or scare away developers from using your library.
+> **Disclaimer:** This guide is for education only and is not legal advice. Obligations depend on the exact license text, how software is combined and distributed, and applicable law. If the choice has legal or business consequences, consult a qualified lawyer.
 
-This repository explains what each of the 13 GitHub licenses gives you, how they differ, and which one you should pick.
+## At a glance
 
----
+All of the licenses below permit commercial use, provided their terms are followed. The table is a high-level summary, not a substitute for reading the license. “No explicit patent grant” does not, by itself, determine whether other patent rights may apply.
 
-## 📊 Quick Comparison Table
+| License (SPDX identifier) | Family | Main compliance point (simplified) | Explicit patent grant |
+| :--- | :--- | :--- | :---: |
+| [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/) (`CC0-1.0`) | Public-domain dedication | No copyright conditions where the waiver is effective; legal limits may apply. | No |
+| [The Unlicense](https://unlicense.org/) (`Unlicense`) | Public-domain dedication | No copyright conditions where the dedication is effective; legal limits may apply. | No |
+| [MIT License](https://opensource.org/license/mit) (`MIT`) | Permissive | Include the copyright and permission notice in copies or substantial portions. | No express grant |
+| [Boost Software License 1.0](https://www.boost.org/LICENSE_1_0.txt) (`BSL-1.0`) | Permissive | Preserve required notices in source distributions; object-code-only distributions are excepted. | No express grant |
+| [BSD 2-Clause](https://opensource.org/license/bsd-2-clause) (`BSD-2-Clause`) | Permissive | Retain the copyright notice, conditions, and disclaimer in source and binary distributions. | No express grant |
+| [BSD 3-Clause](https://opensource.org/license/bsd-3-clause) (`BSD-3-Clause`) | Permissive | BSD-2-Clause requirements, plus no unauthorized endorsement using contributor names. | No express grant |
+| [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0) (`Apache-2.0`) | Permissive | Preserve notices, identify changed files, and include any required `NOTICE` material. | Yes |
+| [Mozilla Public License 2.0](https://www.mozilla.org/en-US/MPL/2.0/) (`MPL-2.0`) | Weak copyleft | When distributing covered software, make source for modified MPL-covered files available under the MPL. | Yes |
+| [Eclipse Public License 2.0](https://www.eclipse.org/legal/epl-2.0/) (`EPL-2.0`) | Weak copyleft | The covered program and contributions are subject to EPL-2.0 terms; other parts may use different terms. | Yes |
+| [GNU LGPL v2.1](https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html) (`LGPL-2.1-only`) | Weak copyleft | Share changes to the library and meet the relinking or replacement requirements for combined works. | No express grant |
+| [GNU GPL v2.0](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html) (`GPL-2.0-only`) | Strong copyleft | When distributing a covered work, provide its source under GPL-2.0; coverage depends on the work and how it is combined. | No express grant |
+| [GNU GPL v3.0](https://www.gnu.org/licenses/gpl-3.0.html) (`GPL-3.0-only`) | Strong copyleft | GPL source-sharing requirements apply to covered works; additional terms address patents and certain locked-down devices. | Yes |
+| [GNU AGPL v3.0](https://www.gnu.org/licenses/agpl-3.0.html) (`AGPL-3.0-only`) | Network copyleft | In addition to GPL-style terms, users interacting remotely with a modified version must be offered its corresponding source. | Yes |
 
-| License | Category | Commercial Use | Can Close Source? | Must Keep Copyright? | Explicit Patent Grant? | Same License Required? |
-| :--- | :--- | :---: | :---: | :---: | :---: | :--- |
-| **CC0 1.0 Universal** | Public Domain | ✅ | ✅ | ❌ No | ❌ Explicitly excluded | ❌ No |
-| **The Unlicense** | Public Domain | ✅ | ✅ | ❌ No | ❌ No | ❌ No |
-| **MIT License** | Permissive | ✅ | ✅ | ✅ Yes | ❌ No | ❌ No |
-| **Boost 1.0 (BSL-1.0)** | Permissive | ✅ | ✅ | ⚠️ Source only | ❌ No | ❌ No |
-| **BSD 2-Clause** | Permissive | ✅ | ✅ | ✅ Yes | ❌ No | ❌ No |
-| **BSD 3-Clause** | Permissive | ✅ | ✅ | ✅ Yes | ❌ No | ❌ No (+ Non-endorsement) |
-| **Apache License 2.0** | Permissive | ✅ | ✅ | ✅ Yes (+ Notices) | ✅ **Yes** | ❌ No |
-| **Mozilla Public 2.0** | Weak Copyleft | ✅ | ⚠️ Combined works | ✅ Yes | ✅ **Yes** | ⚠️ Modified files only |
-| **Eclipse Public 2.0** | Weak Copyleft | ✅ | ⚠️ Combined works | ✅ Yes | ✅ **Yes** | ⚠️ Modules only |
-| **GNU LGPL v2.1** | Weak Copyleft | ✅ | ⚠️ Dynamic linking | ✅ Yes | ❌ Implicit | ⚠️ Library changes only |
-| **GNU GPL v2.0** | Strong Copyleft | ✅ | ❌ **No** | ✅ Yes | ⚠️ Implicit | ✅ **Yes (Entire project)** |
-| **GNU GPL v3.0** | Strong Copyleft | ✅ | ❌ **No** | ✅ Yes | ✅ **Yes** | ✅ **Yes (+ Anti-Tivoization)** |
-| **GNU AGPL v3.0** | Network Copyleft| ✅ | ❌ **No** | ✅ Yes | ✅ **Yes** | ✅ **Yes (+ Cloud/SaaS use)** |
+## License summaries
 
----
+### Public-domain-style dedications
 
-## 1. 🕊️ Public Domain (No Rights Reserved)
-*Take it, do whatever you want, you don't even have to mention my name.*
+#### [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/) (`CC0-1.0`)
+CC0 attempts to waive copyright and related rights worldwide, with a fallback license where a waiver is not legally effective. Its text does not waive patent or trademark rights. It can suit datasets, media, documentation, or small snippets when broad reuse without attribution is intended; it may not be appropriate when an express patent grant is important.
 
-### **Creative Commons Zero v1.0 Universal (CC0-1.0)**
-* **What it gives:** Waives all copyright and related rights worldwide. Anyone can copy, modify, or sell the work without attribution. Includes a legal fallback license for countries where waiving copyright is not legally possible.
-* **Key difference:** Explicitly states that it **does not grant patent rights**. Because of this, it is not recommended for complex software code, as a contributor could theoretically sue users over software patents.
-* **Best for:** Datasets, databases, documentation, game assets, media, and small config/code snippets.
+#### [The Unlicense](https://unlicense.org/) (`Unlicense`)
+The Unlicense combines a public-domain dedication with a fallback permission. It is short and software-focused, but it does not provide an express patent grant. Consider whether its wording and the effect of a public-domain dedication work in the relevant jurisdictions.
 
-### **The Unlicense**
-* **What it gives:** A public domain dedication designed specifically for software code. Dedicates code to the public domain with a simple fallback license.
-* **Key difference:** Simpler and shorter than CC0, written in developer-friendly language rather than heavy legal prose.
-* **Best for:** Small scripts, utilities, and projects where the author wants zero restrictions and zero attribution requirements.
+### Permissive licenses
 
----
+#### [MIT License](https://opensource.org/license/mit) (`MIT`)
+A short, permissive license that allows use, modification, distribution, sublicensing, and sale. Copies or substantial portions must retain the copyright and permission notice. The text has no express patent grant.
 
-## 2. 🤝 Permissive Licenses
-*Do whatever you want (even in proprietary commercial products), just keep my copyright notice and don't sue me.*
+#### [Boost Software License 1.0](https://www.boost.org/LICENSE_1_0.txt) (`BSL-1.0`)
+A permissive license often used for libraries. Its notice requirements generally apply to source copies and derivative works; the license has an exception for distributions consisting solely of machine-executable object code. Read the license text for the exact conditions. It has no express patent grant.
 
-### **MIT License**
-* **What it gives:** The most popular open-source license in the world. Short, simple, allows anyone to reuse code in open or closed projects as long as the original `LICENSE` and copyright notice are included.
-* **Key difference:** Extremely brief (less than 200 words), no explicit patent clauses.
-* **Best for:** Web frameworks, npm/PyPI packages, indie projects, and libraries aiming for maximum adoption.
+#### [BSD 2-Clause](https://opensource.org/license/bsd-2-clause) (`BSD-2-Clause`)
+A permissive license allowing redistribution and use in source and binary forms, with or without modification. Both forms must retain the copyright notice, conditions, and disclaimer.
 
-### **Apache License 2.0**
-* **What it gives:** Full freedom to use, modify, and distribute commercially or privately.
-* **Key difference:** Includes strong **Patent Grant** and **Patent Retaliation** clauses (if you sue over patents in the project, you lose your license). Requires documenting notice of changes in modified files and preserving a `NOTICE` file if present.
-* **Best for:** Enterprise software, serious libraries, AI models, and corporate open-source projects.
+#### [BSD 3-Clause](https://opensource.org/license/bsd-3-clause) (`BSD-3-Clause`)
+Includes the BSD-2-Clause conditions and adds a non-endorsement clause: contributors' names cannot be used to endorse or promote a derived product without prior permission.
 
-### **BSD 2-Clause "Simplified" License**
-* **What it gives:** Almost identical to the MIT license. Allows commercial and private redistribution as long as copyright notices are kept in source and binary distributions.
-* **Key difference:** Structured cleanly into two numbered clauses (1. Source distribution, 2. Binary distribution).
-* **Best for:** System software, C/C++ libraries, and BSD/Unix ecosystem tools.
+#### [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0) (`Apache-2.0`)
+A permissive license with an express patent license and a patent-litigation termination provision. It also requires preserving specified notices, marking modified files, and carrying forward `NOTICE` content when applicable.
 
-### **BSD 3-Clause "New" or "Revised" License**
-* **What it gives:** Everything in BSD 2-Clause, plus an extra protection clause for the author's brand.
-* **Key difference:** Adds **Clause 3 (Non-endorsement)**: prohibits using the names of the author or contributors to promote or endorse derivative products without written permission.
-* **Best for:** Research projects, university code, and corporate tools where brand reputation matters.
+### Weak-copyleft licenses
 
-### **Boost Software License 1.0 (BSL-1.0)**
-* **What it gives:** Ultra-permissive license originally created for C++ libraries.
-* **Key difference:** Does **not** require keeping copyright notices when distributing compiled binaries (`.exe`, `.dll`, mobile apps) — attribution is only required when distributing source code.
-* **Best for:** Header-only C++/Rust libraries and game development tools where shipping binary legal notices is inconvenient.
+#### [Mozilla Public License 2.0](https://www.mozilla.org/en-US/MPL/2.0/) (`MPL-2.0`)
+MPL-2.0 uses file-level copyleft. When distributing covered software, source for MPL-covered files—including modifications to those files—must be made available under the MPL. A larger work can include separately licensed files, subject to the license's conditions.
 
----
+#### [Eclipse Public License 2.0](https://www.eclipse.org/legal/epl-2.0/) (`EPL-2.0`)
+EPL-2.0 is a business-friendly weak-copyleft license with an express patent grant. The license governs covered contributions and derivative works; separate parts of a larger work may use other terms when the EPL's requirements are met. Review its definitions and distribution conditions before combining code.
 
-## 3. 🧩 Weak Copyleft Licenses
-*You can use my library inside your closed-source commercial app, as long as any changes you make to MY files remain open-source.*
+#### [GNU Lesser General Public License v2.1](https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html) (`LGPL-2.1-only`)
+LGPL-2.1 is designed for libraries. It allows use with a proprietary application when its conditions are followed. Changes to the LGPL-covered library remain under the LGPL, and distributors of a combined work must meet requirements that let recipients modify or replace the library; static linking can require extra steps.
 
-### **Mozilla Public License 2.0 (MPL-2.0)**
-* **What it gives:** File-level copyleft. You can combine MPL-2.0 code with proprietary files in the same project.
-* **Key difference:** Copyleft applies strictly per **file**. If you modify an MPL-2.0 file, you must share those modifications under MPL-2.0, but your own new files stay 100% private. Includes explicit patent protection.
-* **Best for:** Libraries and core engines where you want community improvements back without scaring off commercial users.
+### Strong and network copyleft
 
-### **Eclipse Public License 2.0 (EPL-2.0)**
-* **What it gives:** Business-friendly weak copyleft used widely in the Java and enterprise ecosystem.
-* **Key difference:** Allows commercial licensing of combined works and includes modern exceptions for secondary licenses (like GPL-2.0+ compatibility) and explicit patent grants.
-* **Best for:** Enterprise plugins, IDEs, and Java frameworks.
+#### [GNU General Public License v2.0](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html) (`GPL-2.0-only`)
+GPL-2.0 requires source and GPL permissions when a covered work is distributed. Whether a combination forms a covered work depends on the facts and the license; simply being in the same repository does not settle that question. GPL-2.0 has no express patent grant and does not include GPL-3.0's installation-information provisions.
 
-### **GNU Lesser General Public License v2.1 (LGPL-2.1)**
-* **What it gives:** Library-focused copyleft. Proprietary programs can dynamically link to an LGPL library without becoming open-source.
-* **Key difference:** Users of your closed product must be able to replace or relink the LGPL library version. Static linking into closed binaries is tricky and requires providing object files.
-* **Best for:** C/C++ shared libraries (`.so`, `.dll`) that want to prevent competitors from making closed forks of the library itself.
+#### [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html) (`GPL-3.0-only`)
+GPL-3.0 has strong copyleft for covered works and adds an express patent license. It also addresses certain forms of device lock-down and restrictions that interfere with users' exercise of license rights. Its obligations apply as described in the license, not automatically to every separate program used alongside it.
 
----
+#### [GNU Affero General Public License v3.0](https://www.gnu.org/licenses/agpl-3.0.html) (`AGPL-3.0-only`)
+AGPL-3.0 is based on GPL-3.0 and adds a network-use condition. When a modified version is used to provide remote interaction over a network, users interacting with it must be offered the corresponding source. The requirement applies to covered software and should not be read as a blanket rule for every service or dependency.
 
-## 4. 🛡️ Strong & Network Copyleft Licenses
-*Freedom is mandatory: if you distribute a project using my code, the ENTIRE project must be open-source under the same license.*
+## Choosing a license
 
-### **GNU General Public License v2.0 (GPL-2.0)**
-* **What it gives:** Classic strong copyleft made famous by the Linux Kernel. Any distributed derivative work must provide full source code under GPL-2.0.
-* **Key difference:** Does not prohibit hardware lockdown ("Tivoization" — where code is open, but hardware blocks modified versions from running) and lacks the explicit patent clauses of v3.
-* **Best for:** Projects working within the Linux kernel ecosystem.
+- **Broad reuse with minimal conditions:** consider CC0 or The Unlicense, after checking how their dedication and patent terms fit your needs.
+- **Simple permissive terms:** MIT is concise; BSD-2-Clause and BSD-3-Clause add clear redistribution conditions, with BSD-3-Clause also addressing endorsement.
+- **An express patent grant:** consider Apache-2.0; MPL-2.0, EPL-2.0, and GPL-3.0 also include patent provisions, each with a different copyleft scope.
+- **Share changes to a library or covered files while allowing a larger proprietary work:** compare LGPL-2.1, MPL-2.0, and EPL-2.0—their boundaries and obligations differ.
+- **Require source for covered distributed works:** review GPL-2.0 or GPL-3.0. For qualifying network use, review AGPL-3.0.
+- **Need to avoid carrying notices in object-code-only distributions:** review the specific exception in BSL-1.0.
 
-### **GNU General Public License v3.0 (GPL-3.0)**
-* **What it gives:** Modernized strong copyleft. Any project using GPL-3.0 code must be open-sourced under GPL-3.0 when distributed.
-* **Key difference:** Adds explicit **patent protection**, **Anti-Tivoization** (requires providing installation keys for consumer hardware so users can run modified code), and prevents DRM restrictions.
-* **Best for:** Standalone applications, desktop software, and open-source advocates who never want their work turned into proprietary products.
+These are starting points, not legal recommendations. Read the full terms, including compatibility requirements for code from other projects.
 
-### **GNU Affero General Public License v3.0 (AGPL-3.0)**
-* **What it gives:** The strictest open-source license on GitHub. Closes the "Cloud/SaaS Loophole" of GPL-3.0.
-* **Key difference:** In standard GPL, if a company runs modified code on their own servers as a web service (SaaS) without distributing the binary, they don't have to share the source. **AGPL-3.0 forces anyone running the modified software over a network (web/cloud) to provide the full source code to users.**
-* **Best for:** Self-hosted web apps, databases, and server software that want to prevent cloud giants from monetizing their work without contributing back.
+## Further reading
 
----
+- [GitHub: Licensing a repository](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository)
+- [SPDX License List](https://spdx.org/licenses/)
+- The full text of each license linked above
 
-## 🎯 TL;DR — How to Choose in 10 Seconds
+## Contributing
 
-* **I want zero restrictions (for data/assets):** `Creative Commons Zero v1.0 Universal`
-* **I want a simple, popular license for code:** `MIT License`
-* **I want a permissive license with strong patent protection:** `Apache License 2.0`
-* **I don't want people promoting their forks with my name:** `BSD 3-Clause`
-* **I don't want binary apps to carry my copyright notice:** `Boost Software License 1.0`
-* **I want improvements to my files shared back, but allow closed apps:** `Mozilla Public License 2.0`
-* **I want any app using my code to be 100% open-source:** `GNU GPL v3.0`
-* **I want even Cloud/SaaS users of my code to open their changes:** `GNU AGPL v3.0`
+English is the source version. See [CONTRIBUTING.md](CONTRIBUTING.md) for documentation and translation guidelines, or visit the [translation index](i18n/README.md).
+
+## Content license
+
+The guide and its translations are dedicated to the public domain under [CC0 1.0](LICENSE). The license texts linked in this guide belong to their respective authors and are not relicensed here.
